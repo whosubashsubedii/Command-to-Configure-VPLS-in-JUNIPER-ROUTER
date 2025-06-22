@@ -19,11 +19,13 @@ print(f"""
 
 configure private
 
-set interfaces {aggregated_ethernet} unit {vlan} description {vpls}
-set interfaces {aggregated_ethernet} unit {vlan} encapsulation vlan-vpls
-set interfaces {aggregated_ethernet} unit {vlan} vlan-id {vlan}
-set interfaces {aggregated_ethernet} unit {vlan} family vpls
-set routing-instances {vpls} interface {aggregated_ethernet}.{vlan}
+
+
+set interfaces ae{aggregated_ethernet} unit {vlan} description {vpls}
+set interfaces ae{aggregated_ethernet} unit {vlan} encapsulation vlan-vpls
+set interfaces ae{aggregated_ethernet} unit {vlan} vlan-id {vlan}
+set interfaces ae{aggregated_ethernet} unit {vlan} family vpls
+set routing-instances {vpls} interface ae{aggregated_ethernet}.{vlan}
 set routing-instances {vpls} protocols vpls vpls-id {vlan}
 set routing-instances {vpls} description {vpls}
 set routing-instances {vpls} instance-type vpls
